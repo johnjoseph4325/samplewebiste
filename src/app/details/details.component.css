@@ -1,0 +1,78 @@
+table-div{
+
+    margin:0 auto;
+
+}
+
+.table-div td,th{
+    padding: 10px;    
+
+}
+.Add{
+    display: none;
+}
+.table-div tr:hover td{
+    
+    background-color: yellow;
+}
+.table-div tr:hover .Add{
+    display: block;
+
+}
+
+.odd{
+    background-color:cornflowerblue;
+}
+.even{
+    background-color:green;
+}
+
+
+.table1{
+
+    margin:0 auto;
+    border-style: solid;
+    border-color: black;
+    width: 900px;
+    
+
+}
+
+.details{
+    font-weight: bold;
+    padding: 5px;
+}
+.resultDetails{
+    
+    padding-left: 10px;
+    color: lightseagreen;
+    font-weight: bold;
+    font-size: large;
+    
+}
+.modal-sizing{
+    
+    margin: 0 auto;
+}
+.example-container {
+
+    
+    margin:0 auto;
+    width: 900px;
+    margin-top: 50px;
+  }
+  mat-drawer{
+      width: 30%;
+      
+  }
+  
+  mat-drawer-content {
+
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  
+  

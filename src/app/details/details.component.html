@@ -1,0 +1,172 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-9 col-md-6 d-none d-sm-block"  style="background-color:lavender;"></div>
+    <div class="col-lg-1 col-md-2 col-sm-4 col-xs-4" style="background-color:lavenderblush;">{{name.value}}</div>
+    <div class="col-lg-1 col-md-2 col-sm-4 col-xs-4" style="background-color:lavender;">{{email.value}}</div>
+    <div class="col-lg-1 col-md-2 col-sm-4 col-xs-4" style="background-color:lavenderblush;">{{phn.value}}</div>
+  </div>
+</div>
+
+<mat-drawer-container class="example-container" hasBackdrop="true" >
+  <mat-drawer #drawer mode="side">
+
+    <div  >
+      <div >
+        <div>
+          <div style="background-color: darkcyan;color: white;">
+            <h4 ><b>Customer Details</b></h4>
+          </div>
+
+          <div >
+            <form>
+              <div class="form-group">
+                <label for="id" class="details">Id:</label>
+                <label class="resultDetails" style="margin-left: 25px;">{{uid}}</label>
+              </div>
+
+              <div class="form-group">
+                <label for="id" class="details">Name:</label>
+                <label class="resultDetails">{{uname}}</label>
+              </div>
+
+              <div class="form-group">
+                <label for="id" class="details">Email:</label>
+                <label class="resultDetails">{{uemail}}</label>
+              </div>
+
+              <div class="form-group">
+                <label for="id" class="details">Phone:</label>
+                <label class="resultDetails">{{uphne}}</label>
+              </div>
+            </form>
+          </div>
+          
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+     
+     
+    
+  </mat-drawer>
+    <mat-drawer-content>
+    
+
+    <div class="table-div">  
+      
+      
+        <table class="table1">
+          
+            <tr style="background-color: cornflowerblue;">
+              <th  >Sl.No</th>
+              <th  >Name</th>
+              <th  >Email</th>
+              <th  >Phone</th>
+              <th ></th>
+              <th ></th>
+              
+
+            </tr>
+          
+          
+            <tr *ngFor="let user of users$; let i = index" >
+
+              
+
+            <td [ngClass]="{'even': i%2==0, 'odd': i%2!=0}" >
+              
+              <span *ngIf="value===i; else " ><input type="text" style="width: 20px;" [(ngModel)]="user.id"></span>
+              <span *ngIf="value!==i;">{{user.id}}</span>
+            </td>
+
+              <td [ngClass]="{'even': i%2==0, 'odd': i%2!=0}"  >
+              <span *ngIf="value===i; else "><input type="text" [(ngModel)]="user.name"  ></span>
+                <span *ngIf="value!==i;">{{user.name}}</span>
+              </td>
+
+              <td [ngClass]="{'even': i%2==0, 'odd': i%2!=0}"  >
+                <span *ngIf="value===i; else "><input type="text" [(ngModel)]="user.email"></span>
+              <span *ngIf="value!==i;">{{user.email}}</span>
+              </td>
+
+              <td [ngClass]="{'even': i%2==0, 'odd': i%2!=0}"  >
+                <span *ngIf="value===i; else "><input type="text" [(ngModel)]="user.phone"></span>
+              <span *ngIf="value!==i;">{{user.phone}}</span>
+              </td>
+
+              <td [ngClass]="{'even': i%2==0, 'odd': i%2!=0}" >
+                <button type="button" [hidden]="value===i" (click)="editButton(i)" class="btn btn-danger">Edit</button>
+                <button type="button" [hidden]="value!==i" (click)="saveButton(user.id,user.name,user.email,user.phone)" class="btn btn-primary" data-target="#displayResult" data-toggle="modal" mat-raised-button (click)="drawer.toggle()">Save</button>
+                
+              </td>
+              <td [ngClass]="{'even': i%2==0, 'odd': i%2!=0}">
+                <button type="button" class="btn btn-success Add" data-target="#displayResult" data-toggle="modal" >Add</button>
+              </td>
+
+
+            </tr>
+            
+          
+        </table>
+
+        
+
+    
+    </div>
+    
+  
+    </mat-drawer-content>
+ </mat-drawer-container>
+
+
+
+  <!-- pop up box in angular (using modal) -->
+
+
+  <div class="modal" id="displayResult" >
+      <div class="modal-dialog modal-md modal-sizing">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: darkcyan;color: white;">
+            <h4 class="modal-title"><b>Add Customer Details</b></h4>
+            <button class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body" >
+            
+              <div class="form-group">
+                <label for="id" class="details">Id:</label>
+                <input type="text" class="resultDetails"  style="margin-left: 40px;" [(ngModel)]="newid" >
+              </div>
+
+              <div class="form-group">
+                <label for="id" class="details">Name:</label>
+                <input type="text" class="resultDetails"  style="margin-left: 10px;"  [(ngModel)]="newName">
+              </div>
+
+              <div class="form-group">
+                <label for="id" class="details">Email:</label>
+                <input type="text" class="resultDetails"  style="margin-left: 15px;" [(ngModel)]="newEmail">
+              </div>
+
+              <div class="form-group">
+                <label for="id" class="details">Phone:</label>
+                <input type="text" class="resultDetails"  style="margin-left: 10px;" [(ngModel)]="newPhone">
+              </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="addRow()" data-dismiss="modal">Add</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div> 
+
+  
+  

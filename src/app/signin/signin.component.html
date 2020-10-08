@@ -1,0 +1,24 @@
+<div class="sign">
+    <h4 style="text-align: center;">SIGN IN</h4>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" onkeypress='return event.charCode >= 65 && event.charCode <= 122'  maxlength="10" class="form-control" id="name">
+            <span *ngIf="name.invalid && name.dirty" class="error">Name is invalid</span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" formControlName="email" class="form-control" id="email">
+            <span *ngIf="email.invalid && email.dirty" class="error">Enter valid mailId</span>
+          </div>
+          <div class="form-group">
+            <label for="phn">Phone:</label>
+            <input type="text" formControlName="phn" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="phn">
+            <span *ngIf="phn.invalid && phn.dirty" class="error">Enter valid mobile number</span>
+          </div>
+
+          
+          <button type="button" (click)="onSubmit()" routerLink="details" style="float:right" class="btn btn-success" [disabled]="!userForm.valid">SAVE </button>
+    </form>
+</div>
+
